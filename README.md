@@ -32,14 +32,12 @@ the file extension.
 
 For example, to run files on google.com, you would create:
 
-### www.google.com.js
-
+`www.google.com.js`
 ```
 console.log('hello from chrome dotfiles');
 ```
 
-### www.google.com.css
-
+`www.google.com.css`
 ```
 body.hp {
   background: #F00;
