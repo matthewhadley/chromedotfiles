@@ -49,6 +49,13 @@ Which should result in:
 ![google](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/assets/example.jpg)
 
 
+### Differences from [dotjs](https://github.com/defunkt/dotjs)
+
+- loads css as well as javascript
+- css and js are injected into the page via the [tabs api](https://developer.chrome.com/extensions/tabs), no ajax calls and script evaluation is made
+- jquery is not inserted anywhere
+
+
 ---
 
 Chrome dotfiles logo designed by [Daniel Garrett Hickey](http://thenounproject.com/daniel.g.hickey) from the [Noun Project](http://thenounproject.com/) :: Creative Commons – Attribution (CC BY 3.0)
