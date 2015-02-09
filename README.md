@@ -2,8 +2,8 @@
 
 Google Chrome Browser Extension to inject per hostname js and css into tabs.
 
-An alternative to [dotjs](https://github.com/defunkt/dotjs), Chrome dotfiles doesn't require a webserver to run and
-can inject both js and css.
+An alternative to [dotjs](https://github.com/defunkt/dotjs), Chrome dotfiles doesn't
+require a webserver and can inject both js and css.
 
 ## Install
 
@@ -11,8 +11,8 @@ In the future this might get added to the Chrome Web Store, but for now it's eas
 add the extension in "developer mode".
 
 - Clone this repo.
-- Open google chome to [chrome://extensions/](chrome://extensions/)
-- Make sure "developer mode" is clicked in the top right
+- Open google chrome to [chrome://extensions/](chrome://extensions/)
+- Make sure "developer mode" is selected in the top right
 - Click "Load unpacked extension..."
 - Browse to the location of the clone repo, click "select"
 
@@ -32,13 +32,13 @@ the file extension.
 
 For example, to run files on google.com, you would create:
 
-> www.google.com.js
+### www.google.com.js
 
 ```
 console.log('hello from chrome dotfiles');
 ```
 
-> www.google.com.css
+### www.google.com.css
 
 ```
 body.hp {
@@ -50,3 +50,7 @@ Which should result in:
 
 ![google](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/assets/example.jpg)
 
+
+---
+
+Chrome dotfiles logo designed by [Daniel Garrett Hickey](http://thenounproject.com/daniel.g.hickey) from the [Noun Project](http://thenounproject.com/) :: Creative Commons – Attribution (CC BY 3.0)
