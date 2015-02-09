@@ -51,6 +51,7 @@ Which should result in:
 
 ### Differences from [dotjs](https://github.com/defunkt/dotjs)
 
+- only works in Google Chrome
 - loads css as well as javascript
 - css and js are injected into the page via the [tabs api](https://developer.chrome.com/extensions/tabs), no ajax calls and script evaluation is made
 - jquery is not inserted anywhere
