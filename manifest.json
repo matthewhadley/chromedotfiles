@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome dotfiles",
+  "version": "0.0.1",
+  "description": "inject ~/.chromedotfiles/<hostname>.{js,css} into chrome tabs",
+  "icons": {
+     "128": "icon-128.png",
+     "16": "icon-16.png",
+     "48": "icon-48.png"
+  },
+  "permissions": [
+    "http://*/",
+    "https://*/",
+    "webNavigation",
+    "tabs"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  }
+}
