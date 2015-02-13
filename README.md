@@ -24,6 +24,8 @@ Lastly, you will need to create the directory that will contain the js and css t
 you want injected. In the root of the repo, create a directory named `chromedotfiles`.
 Note that `chromedotfiles` can be a symlink if you prefer.
 
+If you pull in future updates to the repo, you will need to click the extension "Reload" link.
+
 ## Usage
 
 Inside of the `chromedotfiles` directory add javascript and css files that you want run, per domain.
