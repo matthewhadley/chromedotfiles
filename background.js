@@ -33,6 +33,19 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       if (chrome.runtime.lastError) {
         return; // file not found. fail silently.
       }
+      chrome.storage.sync.get({
+        injectJquery: false
+      }, function(items) {
+        if (items.injectJquery) {
+          chrome.tabs.executeScript(tabId, {
+            file: 'jquery.min.js'
+          }, function() {
+            chrome.tabs.executeScript(tabId, {
+              'code': '(typeof onJqueryLoad === "function") && onJqueryLoad();'
+            });
+          });
+        }
+      });
     });
   }
 });

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>chromedotfiles options</title>
+  <style>
+    body { padding: 10px; }
+    #status { margin: 5px 0 5px 0; }
+    p { line-height: 1.3; }
+  </style>
+</head>
+
+<body>
+  <label>
+    <input type="checkbox" id="injectJquery">
+    Inject jquery
+  </label>
+  <p>
+    This will only inject jquery into websites which have an associated script in <code>chromedotfiles</code>.
+    After jquery has been injected into the page, the <code>onJqueryLoad()</code> function will be called.
+  </p>
+  <div id="status"></div>
+  <button id="save">Save</button>
+  <script src="options.js"></script>
+</body>
+</html>
