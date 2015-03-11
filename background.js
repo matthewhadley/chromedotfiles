@@ -15,11 +15,24 @@ function getLocation(href) {
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
   if (changeInfo.status === 'complete') {
     var match = getLocation(tab.url);
+    if (!match) {
+      return;
+    }
+
     chrome.tabs.insertCSS(tabId, {
       file: 'chromedotfiles/' + match.hostname + '.css'
+    }, function() {
+      if (chrome.runtime.lastError) {
+        return; // file not found. fail silently.
+      }
     });
+
     chrome.tabs.executeScript(tabId, {
       file: 'chromedotfiles/' + match.hostname + '.js'
+    }, function(res) {
+      if (chrome.runtime.lastError) {
+        return; // file not found. fail silently.
+      }
     });
   }
 });
