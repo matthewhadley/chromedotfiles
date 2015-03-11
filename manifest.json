@@ -11,10 +11,15 @@
     "http://*/",
     "https://*/",
     "webNavigation",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
+  },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
   }
 }
