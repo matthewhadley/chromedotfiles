@@ -51,12 +51,16 @@ Which should result in:
 ![google](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/assets/example.jpg)
 
 
+If there is a `default.js` file in the `chromedotfiles` directory it will be injected into *every*
+domain. This could be used to inject jquery (or any other js) into every site.
+
+
 ### Differences from [dotjs](https://github.com/defunkt/dotjs)
 
 - only works in Google Chrome
 - loads css as well as javascript
 - css and js are injected into the page via the [tabs api](https://developer.chrome.com/extensions/tabs), no ajax calls and script evaluation is made
-- jquery is not inserted anywhere
+- jquery is not inserted anywhere (but see note about `default.js` if you want this)
 
 
 ---

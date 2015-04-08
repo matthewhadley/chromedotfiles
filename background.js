@@ -15,11 +15,39 @@ function getLocation(href) {
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
   if (changeInfo.status === 'complete') {
     var match = getLocation(tab.url);
-    chrome.tabs.insertCSS(tabId, {
-      file: 'chromedotfiles/' + match.hostname + '.css'
-    });
+
+    if (match) {
+      // attempt to insert domain specific css
+      chrome.tabs.insertCSS(tabId, {
+        file: 'chromedotfiles/' + match.hostname + '.css'
+      }, function(res){
+        if (chrome.runtime.lastError) {
+          // file not found, fail silently
+          return;
+        }
+      });
+    }
+
+    // attempt to execute default js
     chrome.tabs.executeScript(tabId, {
-      file: 'chromedotfiles/' + match.hostname + '.js'
+      file: 'chromedotfiles/default.js'
+    }, function(res){
+      if (chrome.runtime.lastError) {
+        // file not found, fail silently
+        return;
+      }
     });
+
+    if (match) {
+      // attempt to execute domain specific js
+      chrome.tabs.executeScript(tabId, {
+        file: 'chromedotfiles/' + match.hostname + '.js'
+      }, function(res) {
+        if (chrome.runtime.lastError) {
+          // file not found, fail silently
+          return;
+        }
+      });
+    }
   }
 });
