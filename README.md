@@ -1,6 +1,6 @@
 # [![Chrome dotfiles](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/icon-64.png)](https://github.com/diffsky/chromedotfiles) Chrome dotfiles
 
-Google Chrome Browser Extension to inject per hostname js and css into tabs.
+Google Chrome Browser Extension to inject per domain js and css into tabs.
 
 An alternative to [dotjs](https://github.com/defunkt/dotjs), Chrome dotfiles doesn't
 require a webserver and can inject both js and css.
