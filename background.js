@@ -1,3 +1,4 @@
+'use strict';
 
 function getLocation(href) {
   var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);
@@ -20,7 +21,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       // attempt to insert domain specific css
       chrome.tabs.insertCSS(tabId, {
         file: 'chromedotfiles/' + match.hostname + '.css'
-      }, function(res){
+      }, function(res) {
         if (chrome.runtime.lastError) {
           // file not found, fail silently
           return;
@@ -31,7 +32,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     // attempt to execute default js
     chrome.tabs.executeScript(tabId, {
       file: 'chromedotfiles/default.js'
-    }, function(res){
+    }, function(res) {
       if (chrome.runtime.lastError) {
         // file not found, fail silently
         return;
