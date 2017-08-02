@@ -50,9 +50,14 @@ Which should result in:
 
 ![google](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/assets/example.jpg)
 
+JavaScript is excuted when the page has completed loading. CSS is injected as early as possible to
+avoid visible delays in applying the styling.
 
 If there is a `default.js` file in the `chromedotfiles` directory it will be injected into *every*
 domain. This could be used to inject jquery (or any other js) into every site.
+
+If there is a `default.css` file in the `chromedotfiles` directory it will be injected into *every*
+domain.
 
 
 ### Differences from [dotjs](https://github.com/defunkt/dotjs)
