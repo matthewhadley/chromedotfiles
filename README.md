@@ -1,4 +1,4 @@
-# [![Chrome dotfiles](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/icon-64.png)](https://github.com/diffsky/chromedotfiles) Chrome dotfiles
+# [![Chrome dotfiles](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/icon-64.png)](https://github.com/matthewhadley/chromedotfiles) Chrome dotfiles
 
 Google Chrome Browser Extension to inject per domain js and css into tabs.
 
@@ -18,7 +18,7 @@ add the extension in "developer mode".
 
 If all goes well you should see something like:
 
-![Chrome dotfiles](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/assets/extensions.jpg)
+![Chrome dotfiles](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/assets/extensions.jpg)
 
 Lastly, you will need to create the directory that will contain the js and css that
 you want injected. In the root of the repo, create a directory named `chromedotfiles`.
@@ -48,7 +48,7 @@ body.hp {
 
 Which should result in:
 
-![google](https://raw.githubusercontent.com/diffsky/chromedotfiles/master/assets/example.jpg)
+![google](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/assets/example.jpg)
 
 JavaScript is excuted when the page has completed loading. CSS is injected as early as possible to
 avoid visible delays in applying the styling.
