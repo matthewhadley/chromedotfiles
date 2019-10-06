@@ -62,7 +62,7 @@ domain.
 If there is no specific file for a site with a subdomain, `subdomain.domain.com`, then
 a file without the `subdomain` will be injected `domain.com.js`.
 
-### Differences from [dotjs](https://github.com/defunkt/dotjs)
+## Differences from [dotjs](https://github.com/defunkt/dotjs)
 
 - only works in Google Chrome
 - loads css as well as javascript
@@ -72,4 +72,4 @@ a file without the `subdomain` will be injected `domain.com.js`.
 
 ---
 
-Chrome dotfiles logo designed by [Daniel Garrett Hickey](http://thenounproject.com/daniel.g.hickey) from the [Noun Project](http://thenounproject.com/) :: Creative Commons – Attribution (CC BY 3.0)
+Chrome dotfiles logo by [Daniel Garrett Hickey](http://thenounproject.com/daniel.g.hickey) from the [Noun Project](http://thenounproject.com/) :: Creative Commons – Attribution (CC BY 3.0)
