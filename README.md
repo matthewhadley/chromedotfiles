@@ -59,8 +59,8 @@ domain. This could be used to inject jquery (or any other js) into every site.
 If there is a `default.css` file in the `chromedotfiles` directory it will be injected into *every*
 domain.
 
-If there is no specific file for a site with a subdomain, *subdomain.domain.com*, a file without the
-subdomain will be injected (e.g. `domain.com.js`).
+If there is no specific file for a site with a subdomain, `subdomain.domain.com`, then
+a file without the `subdomain` will be injected `domain.com.js`.
 
 ### Differences from [dotjs](https://github.com/defunkt/dotjs)
 
