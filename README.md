@@ -22,7 +22,7 @@ If all goes well you should see something like:
 
 Lastly, you will need to create the directory that will contain the js and css that
 you want injected. In the root of the repo, create a directory named `chromedotfiles`.
-Note that `chromedotfiles` can be a symlink if you prefer.
+Note that `chromedotfiles` can be a symlink, such as to `~/.chromedotfiles`.
 
 If you pull in future updates to the repo, you will need to click the extension "Reload" link.
 
