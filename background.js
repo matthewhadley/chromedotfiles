@@ -13,60 +13,57 @@ function getLocation(href) {
   };
 }
 
+function popSubdomain(str) {
+  var newName = str.replace(/[^.]*\./, '')
+  return str !== newName && newName
+}
+
+function insertCSS(tabId, filename) {
+  if (!filename) return;
+
+  chrome.tabs.insertCSS(tabId, {
+    file: 'chromedotfiles/' + filename + '.css',
+    runAt: 'document_start',
+    allFrames: true
+  }, function (res) {
+    if (chrome.runtime.lastError) {
+      insertCSS(tabId, popSubdomain(filename))
+      return;
+    }
+  });
+}
+
+function executeScript(tabId, filename) {
+  if (!filename) return;
+
+  chrome.tabs.executeScript(tabId, {
+    file: 'chromedotfiles/' + filename + '.js'
+  }, function(res) {
+    if (chrome.runtime.lastError) {
+      executeScript(tabId, popSubdomain(filename))
+      return;
+    }
+  });
+}
+
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
   var match = getLocation(tab.url);
 
   // load css early for no visible delays
   if (changeInfo.status === 'loading') {
     // attempt to insert domain specific css
-    chrome.tabs.insertCSS(tabId, {
-      file: 'chromedotfiles/default.css',
-      runAt: 'document_start',
-      allFrames: true
-    }, function (res) {
-      if (chrome.runtime.lastError) {
-        // file not found, fail silently
-        return;
-      }
-    });
-
+    insertCSS(tabId, 'default')
     if (match) {
-      // attempt to insert domain specific css
-      chrome.tabs.insertCSS(tabId, {
-        file: 'chromedotfiles/' + match.hostname + '.css',
-        runAt: 'document_start',
-        allFrames: true
-      }, function(res) {
-        if (chrome.runtime.lastError) {
-          // file not found, fail silently
-          return;
-        }
-      });
+      insertCSS(tabId, match.hostname)
     }
   }
 
   // load js
   if (changeInfo.status === 'complete') {
     // attempt to execute default js
-    chrome.tabs.executeScript(tabId, {
-      file: 'chromedotfiles/default.js'
-    }, function(res) {
-      if (chrome.runtime.lastError) {
-        // file not found, fail silently
-        return;
-      }
-    });
-
+    executeScript(tabId, 'default')
     if (match) {
-      // attempt to execute domain specific js
-      chrome.tabs.executeScript(tabId, {
-        file: 'chromedotfiles/' + match.hostname + '.js'
-      }, function(res) {
-        if (chrome.runtime.lastError) {
-          // file not found, fail silently
-          return;
-        }
-      });
+      executeScript(tabId, match.hostname)
     }
   }
 
