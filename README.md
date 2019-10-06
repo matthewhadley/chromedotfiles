@@ -54,20 +54,26 @@ JavaScript is excuted when the page has completed loading. CSS is injected as ea
 avoid visible delays in applying the styling.
 
 If there is a `default.js` file in the `chromedotfiles` directory it will be injected into *every*
-domain. This could be used to inject jquery (or any other js) into every site.
+domain.
 
 If there is a `default.css` file in the `chromedotfiles` directory it will be injected into *every*
 domain.
 
-If there is no specific file for a site with a subdomain, `subdomain.domain.com`, then
-a file without the `subdomain` will be injected `domain.com.js`.
+Any matching `.js` or `.css` file will attempt to be inserted along a `[subdomain.]domain.tld` path.
+So `foo.bar.baz.com` would result in injection attempts for:
+- `default.js` and `default.css`
+- `foo.bar.baz.com.js` and `foo.bar.baz.com.css`
+- `bar.baz.com.js` and `bar.baz.com.css`
+- `baz.com.js` and `baz.com.css`
+- `com.js` and `com.css`
 
 ## Differences from [dotjs](https://github.com/defunkt/dotjs)
 
 - only works in Google Chrome
 - loads css as well as javascript
 - css and js are injected into the page via the [tabs api](https://developer.chrome.com/extensions/tabs), no ajax calls and script evaluation is made
-- jquery is not inserted anywhere (but see note about `default.js` if you want this)
+- jquery is not inserted anywhere
+- will insert multiple files for subdomain matches
 
 
 ---

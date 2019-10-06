@@ -18,36 +18,39 @@ function popSubdomain(str) {
   return str !== newName && newName;
 }
 
-function insertCSS(tabId, filename) {
-  if (!filename) {
+function insertCSS(tabId, hostname) {
+  if (!hostname) {
     return;
   }
 
   chrome.tabs.insertCSS(tabId, {
-    file: 'chromedotfiles/' + filename + '.css',
+    file: 'chromedotfiles/' + hostname + '.css',
     runAt: 'document_start',
     allFrames: true
   }, function (res) {
     if (chrome.runtime.lastError) {
-      insertCSS(tabId, popSubdomain(filename));
+      // fail silently
       return;
     }
   });
+  // attempt to insert next stylesheet in a subdomain chain
+  insertCSS(tabId, popSubdomain(hostname));
 }
 
-function executeScript(tabId, filename) {
-  if (!filename) {
+function executeScript(tabId, hostname) {
+  if (!hostname) {
     return;
   }
-
   chrome.tabs.executeScript(tabId, {
-    file: 'chromedotfiles/' + filename + '.js'
+    file: 'chromedotfiles/' + hostname + '.js'
   }, function(res) {
     if (chrome.runtime.lastError) {
-      executeScript(tabId, popSubdomain(filename));
+      // fail silently
       return;
     }
   });
+  // attempt to execute next script in a subdomain chain
+  executeScript(tabId, popSubdomain(hostname));
 }
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
@@ -55,9 +58,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
   // load css early for no visible delays
   if (changeInfo.status === 'loading') {
-    // attempt to insert domain specific css
+    // attempt to insert default css
     insertCSS(tabId, 'default');
     if (match) {
+      // attempt to insert domain specific css
       insertCSS(tabId, match.hostname);
     }
   }
@@ -67,6 +71,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     // attempt to execute default js
     executeScript(tabId, 'default');
     if (match) {
+      // attempt to insert domain specific css
       executeScript(tabId, match.hostname);
     }
   }
