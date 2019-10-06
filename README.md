@@ -18,7 +18,7 @@ add the extension in "developer mode".
 
 If all goes well you should see something like:
 
-![Chrome dotfiles](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/assets/extensions.jpg)
+![Chrome dotfiles](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/assets/extensions.png)
 
 Lastly, you will need to create the directory that will contain the js and css that
 you want injected. In the root of the repo, create a directory named `chromedotfiles`.
@@ -34,12 +34,12 @@ the file extension.
 
 For example, to run files on google.com, you would create:
 
-`www.google.com.js`
+`google.com.js`
 ```
 console.log('hello from chrome dotfiles');
 ```
 
-`www.google.com.css`
+`google.com.css`
 ```
 body.hp {
   background: #F00;
@@ -48,7 +48,7 @@ body.hp {
 
 Which should result in:
 
-![google](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/assets/example.jpg)
+![google](https://raw.githubusercontent.com/matthewhadley/chromedotfiles/master/assets/example.png)
 
 JavaScript is excuted when the page has completed loading. CSS is injected as early as possible to
 avoid visible delays in applying the styling.
