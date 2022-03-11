@@ -23,11 +23,13 @@ function insertCSS(tabId, hostname) {
     return;
   }
 
-  chrome.tabs.insertCSS(tabId, {
-    file: 'chromedotfiles/' + hostname + '.css',
-    runAt: 'document_start',
-    allFrames: true
-  }, function (res) {
+  chrome.scripting.insertCSS({
+    target: {
+      tabId: tabId,
+      allFrames: true
+    },
+    files: ['chromedotfiles/' + hostname + '.css']
+  }, function (_) {
     if (chrome.runtime.lastError) {
       // fail silently
       return;
@@ -41,9 +43,13 @@ function executeScript(tabId, hostname) {
   if (!hostname) {
     return;
   }
-  chrome.tabs.executeScript(tabId, {
-    file: 'chromedotfiles/' + hostname + '.js'
-  }, function(res) {
+  chrome.scripting.executeScript({
+    target: {
+      tabId: tabId,
+      allFrames: true,
+    },
+    files: ['chromedotfiles/' + hostname + '.js']
+  }, (_) => {
     if (chrome.runtime.lastError) {
       // fail silently
       return;

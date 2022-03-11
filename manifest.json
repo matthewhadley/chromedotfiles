@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Chrome dotfiles",
   "version": "2.0.0",
   "description": "inject js and css into chrome tabs",
@@ -8,13 +8,14 @@
      "48": "icon-48.png"
   },
   "permissions": [
-    "http://*/",
-    "https://*/",
     "webNavigation",
-    "tabs"
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "background": {
-    "persistent": false,
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   }
 }

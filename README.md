@@ -41,8 +41,8 @@ console.log('hello from chrome dotfiles');
 
 `google.com.css`
 ```
-body.hp {
-  background: #F00;
+html body {
+  background-color: #F00;
 }
 ```
 
